@@ -1,0 +1,4 @@
+*.pyc
+wechat_config.py
+api_config.py
+

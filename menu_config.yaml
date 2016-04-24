@@ -1,0 +1,4 @@
+button:
+  - type: click
+    name: 开始推送
+    key: start_monitoring

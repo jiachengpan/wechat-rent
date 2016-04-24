@@ -1,0 +1,67 @@
+{% extends "templates/base.html" %}
+{% block body %}
+<style>
+  html, body {
+    background-color: #f9f9f9;
+  }
+  .mdl-card {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+</style>
+<div class='mdl-layout__content mdl-color-grey-100 mdl-grid'>
+  {% for item in items | reverse %}
+  <div class='mdl-card mdl-shadow--2dp'>
+    <div class='mdl-card__title'>
+      <h3 class='mdl-card__title-text'> {{item.title}} </h3>
+    </div>
+    <div class='mdl-card__supporting-text'> 
+      <p>
+        {{item.text}}
+      </p>
+
+      <ul class='mdl-list'>
+        {% if item.pics %}
+        <li class='mdl-list__item'>
+          <span class='mdl-list__item-primary-content'>
+            <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="{{item.pics | length}}">photo</div>
+          </span>
+        </li>
+        {% endif %}
+        {% if item.telephone %}
+        <li class='mdl-list__item'>
+          <span class='mdl-list__item-primary-content'>
+            <i class='material-icons mdl-list__item-icon'>phone</i>
+            {{item.telephone[0]}}
+          </span>
+        </li>
+        {% endif %}
+        {% if item.address%}
+        <li class='mdl-list__item'>
+          <span class='mdl-list__item-primary-content'>
+            <i class='material-icons mdl-list__item-icon'>place</i>
+            {{ item.address | join('，') }}
+          </span>
+        </li>
+        {% endif %}
+        {% if item.room_type %}
+        <li class='mdl-list__item'>
+          <span class='mdl-list__item-primary-content'>
+            <i class='material-icons mdl-list__item-icon'>home</i>
+            {{ item.room_type | join('，') }}
+          </span>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="mdl-card__menu">
+  	</div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{item.url}}">
+        查看原文
+    	</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
